@@ -1,0 +1,28 @@
+{% extends "busqueda.html" %}
+{% block ofertas %}
+{% if numviajes > 0 %}
+	{% for viaje in listaviajes %}
+	<div class="col-lg-4 col-md-4 col-sm-6">
+		<a href="{{viaje[6]}}" class="fh5co-card-item">
+			<div class="fh5co-text" id="tarjeta">
+				<h2>Precio: {{viaje[0]}}€</h2>
+				<p>Fecha: {{viaje[3]}}</p>
+				<p>Dirección: {{viaje[4]}}</p>
+				<p>Coche: {{viaje[5]}}</p>
+				<p><span class="btn btn-primary">Sitios Libres: {{viaje[1]}}/{{viaje[2]}}</span></p>
+			</div>
+		</a>
+	</div>
+	{% if loop.index is divisibleby 3 %}
+		<div class="row"></div>
+	{% endif %}
+	{% endfor %}
+{% else %}
+	<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
+		<h2>Lo sentimos, no se han encontrado viajes</h2>
+	</div>
+{% endif %}
+{% endblock %}
+{% block viajes %}
+	<h1>Blablacar desde {{origen|safe}} hasta {{destino|safe}}</h1>
+{% endblock %}
